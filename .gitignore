@@ -1,0 +1,4 @@
+dataset/data_folder
+*__pycache__
+*wandb
+*checkpoint

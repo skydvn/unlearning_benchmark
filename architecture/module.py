@@ -77,6 +77,7 @@ class DeepMoELayer(nn.Module):
         self.last_h = E_raw 
 
         return out.reshape(B, S, D)
+    
 # ==============================================================================
 # Architecture Components
 # ==============================================================================
@@ -268,7 +269,8 @@ class ModuleArchitecture(BaseArchitecture):
 
         self._print_param_counts()
 
-    def _set_grad_mode(self, mode="learning"):
+    def \
+            _set_grad_mode(self, mode="learning"):
         """Freeze/unfreeze specific parts of the network."""
         if mode == "learning":
             for param in self.parameters():

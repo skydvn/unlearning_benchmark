@@ -28,6 +28,7 @@ from architecture.module import ModuleArchitecture
 
 from approx_algo.gradient_ascent import Gradient_Ascent
 from approx_algo.module import Module
+from approx_algo.module2 import Module2
 
 
 class ApplyTransform(Dataset):
@@ -206,7 +207,7 @@ def main():
     print(f"\n[*] Starting Base Training Phase")
 
     if 'module' in args.model_name:
-        algo_wrapper = Module(
+        algo_wrapper = Module2(
             **algo_kwargs,
             lambda_sparse=getattr(args, 'lambda_sparse', 1.0),
             lambda_balance=getattr(args, 'lambda_balance', 1.0),
@@ -216,6 +217,17 @@ def main():
         )
         ema_alpha = getattr(args, 'ema_alpha', 0.9)
         algo_wrapper.learn(ckpt_path=ckpt_prefix, ema_alpha=ema_alpha)
+    # if 'module' in args.model_name:
+    #     algo_wrapper = Module(
+    #         **algo_kwargs,
+    #         lambda_sparse=getattr(args, 'lambda_sparse', 1.0),
+    #         lambda_balance=getattr(args, 'lambda_balance', 1.0),
+    #         lambda_div=getattr(args, 'lambda_div', 1.0),
+    #         # dummy unlearn to prevent error
+    #         alpha=1.0, beta=1.0, gamma=1.0, eta=1.0, k_u=2
+    #     )
+    #     ema_alpha = getattr(args, 'ema_alpha', 0.9)
+    #     algo_wrapper.learn(ckpt_path=ckpt_prefix, ema_alpha=ema_alpha)
     else:
         # standard training loop 
         algo_wrapper = Gradient_Ascent(**algo_kwargs)

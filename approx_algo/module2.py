@@ -130,7 +130,7 @@ class Module2(Gradient_Ascent):
             for n in range(M):
                 if m == n:
                     continue
-                C = (H_tilde[m].T @ H_tilde[n]) / B
+                C = (H_tilde[m].T @ H_tilde[n])
                 loss = loss + (C ** 2).sum()
         return loss
 

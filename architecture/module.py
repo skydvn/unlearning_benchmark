@@ -44,6 +44,8 @@ class DeepMoELayer(nn.Module):
         self.last_pi_all = None
         self.last_pi = None
         self.last_h = None
+        self.last_topk_indices = None
+
 
     def forward(self, x):
         B, S, D = x.shape
@@ -54,6 +56,7 @@ class DeepMoELayer(nn.Module):
         self.last_pi_all = F.softmax(logits, dim=-1)
 
         topk_vals, topk_indices = logits.topk(self.gate_k, dim=-1)
+        self.last_topk_indices = topk_indices.view(B, S, self.gate_k)
         gate_weights = F.softmax(topk_vals, dim=-1)
         
         out = torch.zeros_like(x_flat)

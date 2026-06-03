@@ -253,20 +253,8 @@ def main():
         algo_wrapper = Random_Labeling(**algo_kwargs)
     elif unlearn_algo == 'boundary_shrink':
         algo_wrapper = Boundary_Shrink(**algo_kwargs, epsilon=getattr(args, 'epsilon', 0.1))
-    # elif unlearn_algo in ['module', 'module_unlearn_algo']:
-    #     algo_wrapper = Module(
-    #         **algo_kwargs,
-    #         lambda_sparse=getattr(args, 'lambda_sparse', 1.0),
-    #         lambda_balance=getattr(args, 'lambda_balance', 1.0),
-    #         lambda_div=getattr(args, 'lambda_div', 1.0),
-    #         alpha=getattr(args, 'alpha', 1.0),
-    #         beta=getattr(args, 'beta', 1.0),
-    #         gamma=getattr(args, 'gamma', 1.0),
-    #         eta=getattr(args, 'eta', 1.0),
-    #         k_u=getattr(args, 'k_u', 2)
-    #     )
     elif unlearn_algo in ['module', 'module_unlearn_algo']:
-        algo_wrapper = Module2(
+        algo_wrapper = Module(
             **algo_kwargs,
             lambda_sparse=getattr(args, 'lambda_sparse', 1.0),
             lambda_balance=getattr(args, 'lambda_balance', 1.0),
@@ -277,6 +265,18 @@ def main():
             eta=getattr(args, 'eta', 1.0),
             k_u=getattr(args, 'k_u', 2)
         )
+    # elif unlearn_algo in ['module', 'module_unlearn_algo']:
+    #     algo_wrapper = Module2(
+    #         **algo_kwargs,
+    #         lambda_sparse=getattr(args, 'lambda_sparse', 1.0),
+    #         lambda_balance=getattr(args, 'lambda_balance', 1.0),
+    #         lambda_div=getattr(args, 'lambda_div', 1.0),
+    #         alpha=getattr(args, 'alpha', 1.0),
+    #         beta=getattr(args, 'beta', 1.0),
+    #         gamma=getattr(args, 'gamma', 1.0),
+    #         eta=getattr(args, 'eta', 1.0),
+    #         k_u=getattr(args, 'k_u', 2)
+    #     )
     elif unlearn_algo == 'finetune':
         algo_wrapper = Finetune(**algo_kwargs)
     else:

@@ -20,6 +20,6 @@ k_u: 2
 
 epochs: 50
 batch_size: 32
-lr: 3.0e-7
+lr: 3.0e-4
 fa_threshold: 0.8
 seed: 42

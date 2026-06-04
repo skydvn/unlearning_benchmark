@@ -2,12 +2,12 @@ dataset: "cifar100"
 data_dir: "./dataset/data_folder/cifar100"
 
 model_name: "module_small_patch16_224"
-num_experts: 12
+num_experts: 18
 expert_depth: 2
 expert_hidden_ratio: 0.10
 gate_k: 2
 pretrained: true
-pretrained_model_path: "checkpoint/learn/cifar100_random_12e_module_s16/cifar100_random_12e_module_s16_epoch_39.pt"
+pretrained_model_path: "checkpoint/learn/cifar100_random_18e_module_s16/cifar100_random_18e_module_s16_epoch_39.pt"
 
 unlearn_algo: "module_unlearn_algo"
 unlearn_setting: "random"

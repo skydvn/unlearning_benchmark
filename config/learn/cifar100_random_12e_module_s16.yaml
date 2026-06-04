@@ -1,0 +1,22 @@
+dataset: "cifar100"
+data_dir: "./dataset/data_folder/cifar100"
+
+model_name: "module_small_patch16_224"
+num_experts: 6
+expert_depth: 2
+expert_hidden_ratio: 0.10
+gate_k: 2
+
+lambda_sparse: 0.1
+lambda_balance: 0.1
+lambda_div: 0.1
+
+pretrained: true
+
+unlearn_setting: "random"
+forget_ratio: 0.10
+
+epochs: 50
+batch_size: 32
+lr: 5.0e-4
+seed: 42
